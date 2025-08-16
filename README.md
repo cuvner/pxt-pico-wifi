@@ -38,13 +38,22 @@ Power both boards via USB.
 2. Click **Extensions** → search for this GitHub repo.  
 3. Add the blocks under the **Pico MQTT** category.  
 
+## 🔧 Firmware
+
+The Raspberry Pi Pico must be flashed with the [**pico-modem firmware**](firmware/code.py) that listens for AT-style commands over UART.  
+- Copy the provided `.uf2` firmware to the Pico via drag-and-drop (bootloader mode).  
+- Once flashed, the Pico will respond to AT commands from the micro:bit.
+
 ---
 
-## 🔧 Blocks
+## 🚀 Blocks
 
-- **Setup Adafruit io** – sets up the wifi and mqtt broker credentials then connects.  
-- **Send Data** – sends a string command to the Pico.  
-- **Read Data** – reads one line of response from the Pico.  
+- **Init modem**: Select micro:bit pins for TX/RX and baud rate.  
+- **Wi-Fi**: Set SSID and password.  
+- **Adafruit IO**: Set username and key.  
+- **Feeds**: Add and send feed list to the modem.  
+- **Connect**: Connect to Wi-Fi and MQTT.  
+- **Send numbers**: Send up to 3 values to Adafruit IO feeds.
 
 ---
 
