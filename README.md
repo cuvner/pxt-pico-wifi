@@ -60,6 +60,9 @@ The Raspberry Pi Pico must be flashed with the [**pico-modem firmware**](firmwar
 
 This example reads the micro:bit’s onboard temperature and sends it every 5 seconds.
 
+
+![iot_makecode](iot_makecode.png)
+
 ```typescript
 picoModem.init(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
 picoModem.wifi("YourSSID", "YourPassword")
