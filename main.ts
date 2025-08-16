@@ -51,12 +51,10 @@ namespace picoModem {
         at("AT+CONNECT")
     }
 
-    //% block="send up to 3 numbers %v1 %v2 %v3"
-    //% v2.defl=0 v3.defl=0
-    export function sendNumbers(v1: number, v2?: number, v3?: number) {
-        let msg = "" + v1
-        if (v2 !== undefined) msg = msg + "," + v2
-        if (v3 !== undefined) msg = msg + "," + v3
-        serial.writeLine(msg)
-    }
+//% block="send up to 3 numbers %v1 %v2 %v3"
+//% v2.defl=0 v3.defl=0
+export function sendNumbers(v1: number, v2?: number, v3?: number) {
+    const arr = [v1, v2, v3].filter(v => v !== undefined).map(v => `${v}`)
+    at(`AT+SEND=${arr.join(",")}`)
+}
 }
