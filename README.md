@@ -41,7 +41,7 @@ Power both boards via USB.
 ## 🔧 Firmware
 
 The Raspberry Pi Pico must be flashed with the [**pico-modem firmware**](firmware/code.py) that listens for AT-style commands over UART.  
-- Copy the provided `.uf2` firmware to the Pico via drag-and-drop (bootloader mode).  
+- Copy the provided code.py firmware to the Pico via thonny and save on device.  
 - Once flashed, the Pico will respond to AT commands from the micro:bit.
 
 ---
@@ -59,22 +59,23 @@ The Raspberry Pi Pico must be flashed with the [**pico-modem firmware**](firmwar
 
 ## 🖥️ Example Program
 
-```blocks
-serial.redirect(
-    SerialPin.P0,  // TX pin
-    SerialPin.P1,  // RX pin
-    BaudRate.BaudRate115200
-)
-basic.pause(1000)
+## 📝 Example: Send Temperature
 
-// Send WiFi setup
-PicoMQTT.sendData("WIFI:SET:SSID,PASSWORD")
+This example reads the micro:bit’s onboard temperature and sends it every 5 seconds.
 
-// Send Adafruit IO setup
-PicoMQTT.sendData("AIO:SET:USERNAME,KEY")
+```typescript
+picoModem.init(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
+picoModem.wifi("YourSSID", "YourPassword")
+picoModem.aio("your_aio_username", "your_aio_key")
 
-// Publish a message
-PicoMQTT.sendData("SEND:hello from microbit")
+picoModem.clearFeeds()
+picoModem.addFeed("temperature")
+picoModem.sendFeeds()
+picoModem.connect()
 
-// Read response back
-basic.showString(PicoMQTT.readData())
+basic.forever(function () {
+    let temp = input.temperature()
+    picoModem.sendNumbers(temp)
+    basic.pause(5000)
+})
+```
