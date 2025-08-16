@@ -1,1 +1,2 @@
-# pxt-pico-wifi
+# Pico Modem (micro:bit → Pico W)
+Minimal test extension.
