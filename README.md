@@ -9,11 +9,8 @@ You will need an adafruit account [ADAFRUIT.io](https://io.adafruit.com)
 ## 🔌 Hardware Setup
 
 ### 1. Flash the Pico W
-1. Hold down the **BOOTSEL** button on the Pico and plug it into your computer with USB.  
-2. A drive called **RPI-RP2** will appear.  
-3. Copy the CircuitPython `.uf2` firmware to the drive.  
-4. Once rebooted, a new drive called **CIRCUITPY** will appear.  
-5. Copy `code.py` from this repo onto the **CIRCUITPY** drive.
+1. Plug in the pico and open your code editor.
+5. Copy [code.py](firmware/code.py) from this repo onto the **CIRCUITPY** drive.
 
 ---
 
